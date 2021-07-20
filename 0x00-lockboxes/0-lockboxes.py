@@ -5,9 +5,9 @@
 def canUnlockAll(boxes):
     """Can unlock"""
     keychain = {0}
-    padlocks = list(range(len(boxes)))
+    padlocks = set(range(len(boxes)))
     for _ in boxes:
         for padlock in padlocks:
             if padlock in keychain:
                 keychain.update(boxes[padlock])
-    return (len(keychain) >= len(boxes))
+    return padlocks <= keychain
