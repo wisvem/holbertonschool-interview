@@ -10,4 +10,4 @@ def canUnlockAll(boxes):
         for padlock in padlocks:
             if padlock in keychain:
                 keychain.update(boxes[padlock])
-    return (len(keychain) is len(boxes))
+    return (len(keychain) >= len(boxes))
