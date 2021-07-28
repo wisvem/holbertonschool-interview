@@ -12,7 +12,7 @@ listint_t *insert_node(listint_t **head, int number)
 	listint_t *new = NULL;
 	listint_t *prev;
 
-	if (head != NULL && *head != NULL)
+	if (head != NULL)
 	{
 		h = *head;
 		prev = *head;
@@ -25,10 +25,16 @@ listint_t *insert_node(listint_t **head, int number)
 		if (new == NULL)
 			return (NULL);
 		(*new).n = number;
-		(*new).next = NULL;
-		(*new).n = number;
-		(*new).next = (*prev).next;
-		(*prev).next = new;
+		if (prev == h)
+		{
+			(*new).next = prev;
+			*head = new;
+		}
+		else
+		{
+			(*new).next = (*prev).next;
+			(*prev).next = new;
+		}
 	}
 	return (new);
 }
