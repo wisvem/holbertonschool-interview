@@ -12,7 +12,7 @@ listint_t *insert_node(listint_t **head, int number)
 	listint_t *new = NULL;
 	listint_t *prev;
 
-	if (head != NULL)
+	if (head != NULL && *head != NULL)
 	{
 		h = *head;
 		prev = *head;
