@@ -8,8 +8,25 @@
 **/
 heap_t *heap_insert(heap_t **root, int value)
 {
-	(void)value;
-	(void)root;
+	heap_t *new, *parent;
+
+	if (root)
+	{
+		parent = *root;
+		new = malloc(sizeof(heap_t));
+		if (!new)
+			return (NULL);
+		(*new).n = value;
+		(*new).left = NULL;
+		(*new).right = NULL;
+		if (parent == NULL)
+		{
+			*root = new;
+			return (new);
+		}
+
+		return (new);
+	}
 
 	return (NULL);
 }
