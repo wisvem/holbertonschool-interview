@@ -26,28 +26,21 @@ def is_prime(n):
 
 def minOperations(n):
     """Min op function"""
-    copy = int(n)
+    copy = n
     operations = 0
     while copy > 1:
         if is_prime(copy):
             operations += copy
-            copy = copy / copy
-        elif copy % 2 == 0:
-            operations += 2
-            copy = int(copy / 2)
-        elif copy % 3 == 0:
-            operations += 3
-            copy = int(copy / 3)
-        elif copy % 5 == 0:
-            operations += 5
-            copy = int(copy / 5)
-        elif copy % 7 == 0:
-            operations += 7
-            copy = int(copy / 7)
-    return operations
+            copy = int(copy / copy)
+        else:
+            divisor = min_divisor(copy)
+            operations += divisor
+            copy = int(copy / divisor)
+    return int(operations)
 
-def is_div(num):
-    """Dunction"""
-    for i in range(2, num):
+
+def min_divisor(num):
+    """function to calculate the min divisor"""
+    for i in range(2, num+1):
         if num % i == 0:
-            return i 
+            return i
