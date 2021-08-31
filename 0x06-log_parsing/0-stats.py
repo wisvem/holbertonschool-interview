@@ -8,7 +8,8 @@ from sys import stdin, stdout
 def main():
     """Main function
     """
-    codes = {200: 0, 301: 0, 400: 0, 401: 0, 403: 0, 404: 0, 405: 0, 500: 0}
+    code_list = [200, 301, 400, 401, 403, 404, 405, 500]
+    codes = dict.fromkeys(code_list, 0)
     count = 1
     file_size = 0
     regex = (r'\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}'
@@ -26,18 +27,18 @@ def main():
                     codes[int(line.split(' ')[-2])] += 1
             if count is 10:
                 print('File size: {}'.format(file_size))
-                for k, v in codes.items():
-                    if v is not 0:
-                        print('{}: {}'.format(k, v))
+                for code in code_list:
+                    if codes[code] is not 0:
+                        print('{}: {}'.format(code, codes[code]))
                 count = 1
                 file_size = 0
             else:
                 count += 1
     except KeyboardInterrupt:
         print('File size: {}'.format(file_size))
-        for k, v in codes.items():
-            if v is not 0:
-                print('{}: {}'.format(k, v))
+        for code in code_list:
+            if codes[code] is not 0:
+                print('{}: {}'.format(code, codes[code]))
 
 
 if __name__ == "__main__":
