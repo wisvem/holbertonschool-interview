@@ -25,19 +25,19 @@ def main():
                 if code in codes:
                     codes[int(line.split(' ')[-2])] += 1
             if count is 10:
-                print(f'File size: {file_size}')
+                print('File size: {}'.format(file_size))
                 for k, v in codes.items():
                     if v is not 0:
-                        print(f'{k}: {v}')
+                        print('{}: {}'.format(k, v))
                 count = 1
                 file_size = 0
             else:
                 count += 1
     except KeyboardInterrupt:
-        print(f'File size: {file_size}')
+        print('File size: {}'.format(file_size))
         for k, v in codes.items():
             if v is not 0:
-                print(f'{k}: {v}')
+                print('{}: {}'.format(k, v))
 
 
 if __name__ == "__main__":
