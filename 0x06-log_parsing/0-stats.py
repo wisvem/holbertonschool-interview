@@ -17,7 +17,10 @@ def main():
                 file_size += int(line.split(' ')[-1])
             except:
                 pass
-            code = line.split(' ')[-2]
+            try:
+                code = line.split(' ')[-2]
+            except:
+                code = 'xxx'
             if code in codes:
                 codes[line.split(' ')[-2]] += 1
             if count is 10:
