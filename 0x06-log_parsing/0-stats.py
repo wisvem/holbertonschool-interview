@@ -1,46 +1,37 @@
 #!/usr/bin/python3
-""" A module """
+"""MODULE"""
+import sys
 
-from sys import stdin, stdout
+
+def print_info(dic, size):
+    """ Print function """
+    print("File size: {:d}".format(size))
+    for i in sorted(dic.keys()):
+        if dic[i] != 0:
+            print("{}: {:d}".format(i, dic[i]))
 
 
 def main():
     """Main function"""
-    count = 1
-    code_list = ["200", "301", "400", "401", "403", "404", "405", "500"]
-    codes = dict.fromkeys(code_list, 0)
-    file_size = 0
-
-    try:
-        for line in stdin:
-            try:
-                file_size += int(line.split(' ')[-1])
-            except:
-                pass
-            try:
-                code = line.split(' ')[-2]
-            except:
-                code = 'xxx'
-            if code in codes:
-                codes[line.split(' ')[-2]] += 1
-            if count is 10:
-                print_status(file_size, code_list, codes)
-                count = 1
-            else:
-                count += 1
-    except KeyboardInterrupt:
-        pass
-    if count < 10:
-        print_status(file_size, code_list, codes)
-
-
-def print_status(fs, cl, codes):
-    """Print function"""
-    print('File size: {}'.format(fs))
-    for code in cl:
-        if codes[code] is not 0:
-            print('{}: {}'.format(code, codes[code]))
-
+    sts = {"200": 0, "301": 0, "400": 0, "401": 0, "403": 0,
+           "404": 0, "405": 0, "500": 0}
+    count = 0
+    size = 0
+    for line in sys.stdin:
+        if count != 0 and count % 10 == 0:
+            print_info(sts, size)
+        stlist = line.split()
+        count += 1
+        try:
+            size += int(stlist[-1])
+        except:
+            pass
+        try:
+            if stlist[-2] in sts:
+                sts[stlist[-2]] += 1
+        except:
+            pass
+    print_info(sts, size)
 
 if __name__ == "__main__":
     main()
