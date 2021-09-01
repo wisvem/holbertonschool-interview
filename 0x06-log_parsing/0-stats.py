@@ -27,8 +27,6 @@ def main():
                 count += 1
     except KeyboardInterrupt:
         print_status(file_size, code_list, codes)
-    if count < 10:
-        print_status(file_size, code_list, codes)
 
 
 def print_status(fs, cl, codes):
