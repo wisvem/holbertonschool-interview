@@ -26,9 +26,7 @@ def main():
             else:
                 count += 1
     except KeyboardInterrupt:
-        print_status(file_size, code_list, codes)
-    except EOFError:
-        print_status(file_size, code_list, codes)
+        pass
     if count < 10:
         print_status(file_size, code_list, codes)
 
