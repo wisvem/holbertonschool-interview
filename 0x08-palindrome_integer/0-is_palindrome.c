@@ -11,15 +11,9 @@ int is_palindrome(unsigned long n)
 	unsigned long x = 0, i;
 
 	while (n > 0)
-	{
-		m[x] = n % 10;
-		n = n / 10;
-		x++;
-	}
+		m[x] = n % 10, n = n / 10, x++;
 	for (i = 0; i < x / 2; i++)
-	{
 		if (m[i] != m[x - 1 - i])
 			return (0);
-	}
 	return (1);
 }
