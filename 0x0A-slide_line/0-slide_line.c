@@ -101,9 +101,6 @@ int slide_line(int *line, size_t size, int direction)
 {
 	int sw = 0, size2 = size;
 
-	if (line == NULL || (direction != 0 && direction != 1))
-		return (0);
-
 	if (direction == 1)
 	{
 		move_left(line, size2);
