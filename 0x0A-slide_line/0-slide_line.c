@@ -99,19 +99,15 @@ void move_right(int *line, int size2)
 **/
 int slide_line(int *line, size_t size, int direction)
 {
-	int sw = 0, size2 = size;
+	int size2 = size;
 
-	if (!line || (direction != 0 && direction != 1))
-		return (0);
 	if (direction == 1)
 	{
 		move_left(line, size2);
-		sw = 1;
 	}
 	else if (direction == 0)
 	{
 		move_right(line, size2);
-		sw = 1;
 	}
-	return (sw);
+	return (1);
 }
