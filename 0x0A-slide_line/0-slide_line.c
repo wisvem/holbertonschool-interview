@@ -18,6 +18,7 @@ void move_left(int *line, int size2)
 			j++;
 		}
 	}
+	line[j] = 0;
 	for (i = 0; i < size2 - 1; i++)
 	{
 		if (i < j && line[i] == line[i + 1])
@@ -63,6 +64,7 @@ void move_right(int *line, int size2)
 			j--;
 		}
 	}
+	line[j] = 0;
 	for (i = size2 - 1; i >= 0; i--)
 	{
 		if (i > j && line[i] == line[i - 1])
