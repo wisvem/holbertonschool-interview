@@ -64,8 +64,7 @@ void move_right(int *line, int size2)
 			j--;
 		}
 	}
-	if (j >= 0)
-		line[j] = 0;
+
 	for (i = size2 - 1; i >= 0; i--)
 	{
 		if (i > j && line[i] == line[i - 1])
