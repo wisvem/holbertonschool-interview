@@ -18,7 +18,8 @@ void move_left(int *line, int size2)
 			j++;
 		}
 	}
-	line[j] = 0;
+	if (j < size2)
+		line[j] = 0;
 	for (i = 0; i < size2 - 1; i++)
 	{
 		if (i < j && line[i] == line[i + 1])
@@ -64,7 +65,8 @@ void move_right(int *line, int size2)
 			j--;
 		}
 	}
-	line[j] = 0;
+	if (j >= 0)
+		line[j] = 0;
 	for (i = size2 - 1; i >= 0; i--)
 	{
 		if (i > j && line[i] == line[i - 1])
@@ -103,6 +105,10 @@ int slide_line(int *line, size_t size, int direction)
 {
 	int size2 = size;
 
+	if (direction != 0 && direction != 1)
+		return (0);
+	if (line == NULL || size < 1)
+		return (0);
 	if (direction == 1)
 	{
 		move_left(line, size2);
