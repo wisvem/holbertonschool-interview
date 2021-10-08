@@ -1,40 +1,49 @@
 #include "menger.h"
+#include <stdio.h>
+#include <math.h>
+
 
 /**
- * print_simple - entry point
- **/
-void print_simple(void)
+ * One - Checks if indices are (1, 1), if so, then square is blank
+ *
+ * @i: Row Index
+ * @j: Column Index
+ *
+ * Return: 1 if (1, 1), 0 otherwise
+ */
+
+int One(int i, int j)
 {
-	printf("###\n");
-	printf("# #\n");
-	printf("###\n");
+	while (i != 0 && j != 0)
+	{
+		if (i % 3 == 1 && j % 3 == 1)
+			return (0);
+
+		i /= 3, j /= 3;
+	}
+	return (1);
 }
 
 /**
- * print_menger - entry point
- * @level: level
- **/
-void print_menger(int level)
-{
-	double i, j;
-
-	level = pow(3, level);
-
-	for (i = 0; i < level / 3; i++)
-		for (j = 0; j < level / 3; j++)
-			printf("#");
-}
-
-/**
- * menger - entry point
- * @level: level
- **/
+ * menger - Entry point
+ *
+ * @level: level of the Menger Sponge to draw
+ *
+ * Return: Nothing
+ */
 void menger(int level)
 {
-	if (level == 1)
-		print_simple();
-	else if (level == 0)
-		printf("#\n");
-	else if (level > 1)
-		print_menger(level);
+	int i, j, limit;
+
+	if (level < 0)
+		return;
+
+	for (i = 0, limit = pow(3, level); i < limit; i++)
+	{
+		for (j = 0; j < limit; j++)
+		{
+			One(i, j) == 1 ? printf("%c", '#') : printf("%c", ' ');
+		}
+		printf("\n");
+	}
 }
