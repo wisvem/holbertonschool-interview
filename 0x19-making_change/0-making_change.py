@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Make change script"""
 
+
 def makeChange(coins, total):
     """Make change function"""
     change = 0
